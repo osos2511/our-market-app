@@ -35,11 +35,53 @@ class LoginView extends StatelessWidget {
                         icon: Icon(Icons.visibility_off),
                       ),
                     ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        CustomTextButton(
+                          text: 'Forgot Password?',
+                          onTap: () {},
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.kPrimaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: Text('Login'),
+                    ),
                   ],
                 ),
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomTextButton extends StatelessWidget {
+  const CustomTextButton({this.onTap, required this.text, super.key});
+  final void Function()? onTap;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Text(
+        text,
+        style: TextStyle(
+          color: AppColors.kPrimaryColor,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
