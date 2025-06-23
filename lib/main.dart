@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:our_market/app_colors.dart';
+import 'package:our_market/core/app_colors.dart';
 import 'package:our_market/views/auth/ui/login_view.dart';
 
 void main() {

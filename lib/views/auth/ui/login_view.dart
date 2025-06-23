@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:our_market/app_colors.dart';
+import 'package:our_market/core/app_colors.dart';
+import 'package:our_market/views/auth/ui/forgot_password_view.dart';
+import 'package:our_market/views/auth/ui/widgets/custom_arrow_button.dart';
+import 'package:our_market/views/auth/ui/widgets/custom_text_button.dart';
+import 'package:our_market/views/auth/ui/widgets/custom_text_field.dart';
+
+import '../../../core/navigate_to.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -11,7 +17,7 @@ class LoginView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 50),
               Text(
                 'Welcome To Our Market',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -42,7 +48,9 @@ class LoginView extends StatelessWidget {
                         children: [
                           CustomTextButton(
                             text: 'Forgot Password?',
-                            onTap: () {},
+                            onTap: () {
+                              navigateTo(context,ForgotPasswordView());
+                            },
                           ),
                         ],
                       ),
@@ -112,85 +120,5 @@ class LoginView extends StatelessWidget {
       ),
     );
   }
-}
 
-class CustomArrowBtn extends StatelessWidget {
-  const CustomArrowBtn({super.key, this.onPressed});
-  final void Function()? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.kPrimaryColor,
-        foregroundColor: AppColors.kWhiteColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      ),
-      child: Icon(Icons.arrow_forward, size: 20),
-    );
-  }
-}
-
-class CustomTextButton extends StatelessWidget {
-  const CustomTextButton({this.onTap, required this.text, super.key});
-  final void Function()? onTap;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: AppColors.kPrimaryColor,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-}
-
-class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
-    super.key,
-    required this.labelText,
-    this.suffixIcon,
-    this.isSecure = false,
-  });
-  final String labelText;
-  final Widget? suffixIcon;
-  final bool isSecure;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: isSecure,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter your email';
-        }
-        return null;
-      },
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        labelText: labelText,
-        suffixIcon: suffixIcon,
-        border: OutlineInputBorder(
-          borderSide: BorderSide(width: 2, color: AppColors.kBordersideColor),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.kBordersideColor),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.kBordersideColor),
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
-    );
-  }
 }
