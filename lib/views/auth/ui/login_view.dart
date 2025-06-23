@@ -8,61 +8,126 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            Text(
-              'Welcome To Our Market',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 24),
-            Card(
-              margin: EdgeInsets.all(24),
-              color: AppColors.kWhiteColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              Text(
+                'Welcome To Our Market',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    CustomTextFormField(labelText: 'Email'),
-                    SizedBox(height: 20),
-                    CustomTextFormField(
-                      labelText: 'Password',
-                      suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.visibility_off),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        CustomTextButton(
-                          text: 'Forgot Password?',
-                          onTap: () {},
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.kPrimaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+              SizedBox(height: 24),
+              Card(
+                margin: EdgeInsets.all(24),
+                color: AppColors.kWhiteColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      CustomTextFormField(labelText: 'Email'),
+                      SizedBox(height: 20),
+                      CustomTextFormField(
+                        labelText: 'Password',
+                        suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.visibility_off),
                         ),
                       ),
-                      child: Text('Login'),
-                    ),
-                  ],
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CustomTextButton(
+                            text: 'Forgot Password?',
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Login",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          CustomArrowBtn(
+                            onPressed: () {
+                              // Handle login action
+                            },
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Login with Google",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          CustomArrowBtn(
+                            onPressed: () {
+                              // Handle login action
+                            },
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't have an account? ",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          CustomTextButton(
+                            text: 'Sign Up',
+                            onTap: () {
+                              // Handle sign up action
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class CustomArrowBtn extends StatelessWidget {
+  const CustomArrowBtn({super.key, this.onPressed});
+  final void Function()? onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.kPrimaryColor,
+        foregroundColor: AppColors.kWhiteColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      ),
+      child: Icon(Icons.arrow_forward, size: 20),
     );
   }
 }
