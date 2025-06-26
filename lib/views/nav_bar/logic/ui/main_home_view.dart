@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:our_market/core/app_colors.dart';
+import 'package:our_market/views/favourites/ui/favourites_view.dart';
+import 'package:our_market/views/home/ui/home_view.dart';
+import 'package:our_market/views/profile/ui/profile_view.dart';
+import 'package:our_market/views/store/ui/store_view.dart';
 
 class MainHomeView extends StatelessWidget {
-  const MainHomeView({Key? key}) : super(key: key);
+  MainHomeView({Key? key}) : super(key: key);
+  final List<Widget> views = [
+    HomeView(),
+    StoreView(),
+    FavouritesView(),
+    ProfileView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Container(
-            child: Center(
-              child: Text(
-                'Welcome to Our Market',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ),
-      ),
+      body: SafeArea(child: views[2]),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(color: AppColors.kWhiteColor),
         child: Padding(
