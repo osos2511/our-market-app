@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:our_market/core/app_colors.dart';
-import 'package:our_market/views/auth/ui/forgot_password_view.dart';
-import 'package:our_market/views/auth/ui/signUp_view.dart';
+import 'package:our_market/views/auth/ui/login_view.dart';
 import 'package:our_market/views/auth/ui/widgets/custom_arrow_button.dart';
 import 'package:our_market/views/auth/ui/widgets/custom_text_button.dart';
 import 'package:our_market/views/auth/ui/widgets/custom_text_field.dart';
 
 import '../../../core/navigate_to.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignUpView extends StatelessWidget {
+  const SignUpView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +33,19 @@ class LoginView extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      CustomTextFormField(labelText: 'Email',textInputType: TextInputType.emailAddress),
+                      CustomTextFormField(
+                        labelText: 'Name',
+                        textInputType: TextInputType.name,
+                      ),
+                      SizedBox(height: 20),
+                      CustomTextFormField(
+                        labelText: 'Email',
+                        textInputType: TextInputType.emailAddress,
+                      ),
                       SizedBox(height: 20),
                       CustomTextFormField(
                         labelText: 'Password',
-                          textInputType: TextInputType.visiblePassword,
+                        textInputType: TextInputType.visiblePassword,
                         suffixIcon: IconButton(
                           onPressed: () {},
                           icon: Icon(Icons.visibility_off),
@@ -46,22 +53,10 @@ class LoginView extends StatelessWidget {
                       ),
                       SizedBox(height: 20),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CustomTextButton(
-                            text: 'Forgot Password?',
-                            onTap: () {
-                              navigateTo(context,ForgotPasswordView());
-                            },
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Login",
+                            "Sign Up",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -69,7 +64,7 @@ class LoginView extends StatelessWidget {
                           ),
                           CustomArrowBtn(
                             onPressed: () {
-
+                              // Handle login action
                             },
                           ),
                         ],
@@ -79,7 +74,7 @@ class LoginView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Login with Google",
+                            "Sign Up with Google",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -97,7 +92,7 @@ class LoginView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Don't have an account? ",
+                            "Already have an account? ",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -105,9 +100,9 @@ class LoginView extends StatelessWidget {
                           ),
                           SizedBox(width: 5),
                           CustomTextButton(
-                            text: 'Sign Up',
+                            text: 'Login',
                             onTap: () {
-                              navigateTo(context, SignUpView());
+                              navigateTo(context, LoginView());
                             },
                           ),
                         ],
@@ -122,5 +117,4 @@ class LoginView extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -7,10 +7,12 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     this.suffixIcon,
     this.isSecure = false,
+    this.textInputType
   });
   final String labelText;
   final Widget? suffixIcon;
   final bool isSecure;
+  final TextInputType? textInputType;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: textInputType,
       decoration: InputDecoration(
         labelText: labelText,
         suffixIcon: suffixIcon,
