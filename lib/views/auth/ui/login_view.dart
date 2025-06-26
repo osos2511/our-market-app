@@ -5,6 +5,7 @@ import 'package:our_market/views/auth/ui/signUp_view.dart';
 import 'package:our_market/views/auth/ui/widgets/custom_arrow_button.dart';
 import 'package:our_market/views/auth/ui/widgets/custom_text_button.dart';
 import 'package:our_market/views/auth/ui/widgets/custom_text_field.dart';
+import 'package:our_market/views/nav_bar/logic/ui/main_home_view.dart';
 
 import '../../../core/navigate_to.dart';
 
@@ -34,11 +35,14 @@ class LoginView extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      CustomTextFormField(labelText: 'Email',textInputType: TextInputType.emailAddress),
+                      CustomTextFormField(
+                        labelText: 'Email',
+                        textInputType: TextInputType.emailAddress,
+                      ),
                       SizedBox(height: 20),
                       CustomTextFormField(
                         labelText: 'Password',
-                          textInputType: TextInputType.visiblePassword,
+                        textInputType: TextInputType.visiblePassword,
                         suffixIcon: IconButton(
                           onPressed: () {},
                           icon: Icon(Icons.visibility_off),
@@ -51,7 +55,7 @@ class LoginView extends StatelessWidget {
                           CustomTextButton(
                             text: 'Forgot Password?',
                             onTap: () {
-                              navigateTo(context,ForgotPasswordView());
+                              navigateTo(context, ForgotPasswordView());
                             },
                           ),
                         ],
@@ -67,11 +71,7 @@ class LoginView extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          CustomArrowBtn(
-                            onPressed: () {
-
-                            },
-                          ),
+                          CustomArrowBtn(onPressed: () {}),
                         ],
                       ),
                       SizedBox(height: 20),
@@ -87,7 +87,7 @@ class LoginView extends StatelessWidget {
                           ),
                           CustomArrowBtn(
                             onPressed: () {
-                              // Handle login action
+                              navigateTo(context, MainHomeView());
                             },
                           ),
                         ],
@@ -122,5 +122,4 @@ class LoginView extends StatelessWidget {
       ),
     );
   }
-
 }
